@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
+import data from './data.json';
 //feature 1
-import ProductList from './components/ProductList';
 
-function App() {
+import Products from './components/Products';
+
+const App = () => {
+  const [products, setproducts] = useState(data.products);
+  const [size, setsize] = useState('');
+  const [sort, setsort] = useState('');
   return (
     <div className='grid-container'>
       <header>
@@ -10,11 +15,16 @@ function App() {
         <div>Admin</div>
       </header>
       <main>
-        <ProductList />
+        <div className='content'>
+          <div className='main'>
+            <Products product={products}></Products>
+          </div>
+          <div className='sidebar'></div>
+        </div>
       </main>
       <footer>All right is reserved</footer>
     </div>
   );
-}
+};
 
 export default App;
